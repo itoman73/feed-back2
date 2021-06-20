@@ -1,0 +1,26 @@
+<h3>前向きフィードバック(<%= @user.name %>)でソート中</h3>
+
+<% if user_signed_in? %>
+<div class="row">   
+    <% @feedbacks.each do |feedback| %>
+        <div class="col-sm-12">
+            <div class="card mb-3" style="max-width: 100rem;">
+                <div class="card-header text-white bg-warning ">
+                    <p>To：<%= feedback.user.name %></p>
+                    <h5><%= feedback.title %></h5>
+                    <div class="buttons">
+                        <a href="/feedbacks/<%= feedback.id %>" data-method="delete"><span>削除</span></a>
+                        <span>　　　</span>
+                        <a href="/feedbacks/<%= feedback.id %>/edit"><span>修正</span></a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <p class="card-text"><%= feedback.body %></p>
+                </div>
+            </div>
+        </div>
+    <% end %>
+</div>
+<% else %>
+  <%= render 'feedbacks/not_logged_in' %>
+<% end %>

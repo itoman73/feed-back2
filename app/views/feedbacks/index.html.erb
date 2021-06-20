@@ -1,0 +1,7 @@
+<h3>前向きフィードバック（全体）</h3>
+
+<% if user_signed_in? %>
+  <%= render 'feedbacks/logged_in' %>
+<% else %>
+  <%= render 'feedbacks/not_logged_in' %>
+<% end %>

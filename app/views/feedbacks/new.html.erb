@@ -1,0 +1,21 @@
+<h3>フィードバック送信画面</h3>
+
+<% if user_signed_in? %>
+    <%= form_tag("/create") do %>
+        <div>
+            <%= label_tag "form-content", "To" %>
+            <p><%= select_tag "feedbacks[user]", options_from_collection_for_select(@users, :id, :name) %></p>
+        </div>
+        <div class="form-group">
+            <%= label_tag "form-title", "タイトル" %>
+            <%= text_field :feedbacks, :title, id:"form-title", class:"form-control", placeholder: "タイトル" %>
+        </div>
+        <div class="form-group">
+            <%= label_tag "form-content", "フィードバック内容" %>
+            <%= text_area :feedbacks, :body, id:"form-content", class:"form-control", placeholder: "フィードバック内容" %>
+        </div>
+            <%= submit_tag "送信",class:"btn btn-primary", data: { confirm: "送信しますがよろしいですか？" } %>
+    <% end %>
+<% else %>
+  <%= render 'feedbacks/not_logged_in' %>
+<% end %>

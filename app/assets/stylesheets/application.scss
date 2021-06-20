@@ -1,0 +1,30 @@
+@import "bootstrap";
+
+.navbar{
+    margin-bottom: 30px;
+}
+
+.buttons{
+    text-align: right;
+    margin-top: -30px;
+}
+
+.new_user_registration{
+  display: block;
+  margin: 0 0 0 auto;
+}
+
+input[type="email"] {
+    width: 400px;
+    height: 40px;
+}
+
+input[type="password"] {
+    width: 400px;
+    height: 40px;
+}
+
+#form-content{
+    height: 200px;
+    overflow-wrap: break-word;
+}

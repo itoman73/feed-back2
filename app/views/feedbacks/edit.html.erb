@@ -1,0 +1,14 @@
+<h3>再送信（修正）画面</h3>
+
+<%= form_tag("/feedbacks/"+@feedback.id.to_s,:method=>:patch) do %>
+    <span>To：</span><%= select_tag "feedbacks[user]", options_from_collection_for_select(@users, :id, :name, @feedback.user_id) %>
+    <div class="form-group">
+        <%= label_tag "form-title", "Title" %>
+        <%= text_field :feedbacks, :title, id:"form-title", class:"form-control", value: @feedback.title %>
+    </div>
+    <div class="form-group">
+        <%= label_tag "form-content", "Content" %>
+        <%= text_area :feedbacks, :body, id:"form-content", class:"form-control", value: @feedback.body %>
+    </div>
+        <%= submit_tag "Edit",class:"btn btn-primary" %>
+<% end %>
