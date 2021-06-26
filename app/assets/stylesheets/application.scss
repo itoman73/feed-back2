@@ -24,7 +24,12 @@ input[type="password"] {
     height: 40px;
 }
 
-#form-content{
-    height: 200px;
+#form-content-assist{
+    height: 120px;
+    overflow-wrap: break-word;
+}
+
+#form-content-action{
+    height: 120px;
     overflow-wrap: break-word;
 }

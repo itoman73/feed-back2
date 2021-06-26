@@ -11,10 +11,14 @@
             <%= text_field :feedbacks, :title, id:"form-title", class:"form-control", placeholder: "タイトル" %>
         </div>
         <div class="form-group">
-            <%= label_tag "form-content", "フィードバック内容" %>
-            <%= text_area :feedbacks, :body, id:"form-content", class:"form-control", placeholder: "フィードバック内容" %>
+            <%= label_tag "form-content-assist", "フィードバック内容(Aim to Assist）" %>
+            <%= text_area :feedbacks, :assist, id:"form-content-assist", class:"form-control", placeholder: "フィードバック内容(Aim to Assist）" %>
         </div>
-            <%= submit_tag "送信",class:"btn btn-primary", data: { confirm: "送信しますがよろしいですか？" } %>
+        <div class="form-group">
+            <%= label_tag "form-content-action", "フィードバック内容(Actionable)" %>
+            <%= text_area :feedbacks, :action, id:"form-content-action", class:"form-control", placeholder: "フィードバック内容(Actionable)" %>
+        </div>
+        <%= submit_tag "送信",class:"btn btn-primary", data: { confirm: "送信しますがよろしいですか？" } %>
     <% end %>
 <% else %>
   <%= render 'feedbacks/not_logged_in' %>
