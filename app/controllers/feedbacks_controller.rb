@@ -11,7 +11,7 @@ class FeedbacksController < ApplicationController
     
     def create
         #新しいフィードバックがフォームからPostされた時に動作するアクション
-        Feedback.create(title:params["feedbacks"]["title"],body:params["feedbacks"]["body"],user_id:params["feedbacks"]["user"])
+        Feedback.create(title:params["feedbacks"]["title"],assist:params["feedbacks"]["assist"],action:params["feedbacks"]["action"],user_id:params["feedbacks"]["user"])
         redirect_to "/"
     end
      
@@ -28,7 +28,8 @@ class FeedbacksController < ApplicationController
     def update
         feedback = Feedback.find(params["id"])
         feedback.title = params["feedbacks"]["title"]
-        feedback.body = params["feedbacks"]["body"]
+        feedback.assist = params["feedbacks"]["assist"]
+        feedback.action = params["feedbacks"]["action"]
         feedback.user_id = params["feedbacks"]["user"]
         feedback.save
         redirect_to "/"
