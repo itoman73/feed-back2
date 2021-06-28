@@ -38,6 +38,7 @@
         </ul>
       <% if user_signed_in? %>
       <div class="new_user_registration">
+        <span><%= @users.find_by(id: current_user.id).name %>:ログイン中</span>
         <button type="button" class="btn btn-light">
           <%= link_to "アカウント情報更新", edit_user_registration_path, class: 'post' %>
         </button>
