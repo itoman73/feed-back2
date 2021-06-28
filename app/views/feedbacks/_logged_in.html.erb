@@ -2,8 +2,20 @@
     <% @feedbacks.each do |feedback| %>
         <div class="col-sm-12">
             <div class="card mb-3" style="max-width: 100rem;">
-                <div class="card-header text-white bg-warning ">
-                    <p>To：<%= feedback.user.name %></p>
+                <div class="card-header text-white bg-warning">
+                    <p>
+                        <% if feedback.user.image? %>
+                            <%= image_tag feedback.user.image.url, class: "thumbnail"  %>
+                        <% end %>
+                        To：<%= feedback.user.name %>
+                        <% authors = @authors.find_by(feedback_id: feedback) %>
+                        <span class="thumbnail-from-user">
+                        <% if authors.user.image? %>
+                            <%= image_tag authors.user.image.url, class: "thumbnail" %>
+                        <% end %>
+                        From：<%= authors.user.name %>
+                        </span>
+                    </p>
                     <h5><%= feedback.title %></h5>
                     <div class="buttons">
                         <a href="/feedbacks/<%= feedback.id %>" data-method="delete"><span>削除</span></a>

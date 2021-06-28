@@ -6,7 +6,19 @@
         <div class="col-sm-12">
             <div class="card mb-3" style="max-width: 100rem;">
                 <div class="card-header text-white bg-warning ">
-                    <p>To：<%= feedback.user.name %></p>
+                    <p>
+                        <% if feedback.user.image? %>
+                            <%= image_tag feedback.user.image.url, class: "thumbnail"  %>
+                        <% end %>
+                        To：<%= feedback.user.name %>
+                        <% authors = @authors.find_by(feedback_id: feedback) %>
+                        <span class="thumbnail-from-user">
+                        <% if authors.user.image? %>
+                            <%= image_tag authors.user.image.url, class: "thumbnail" %>
+                        <% end %>
+                        From：<%= authors.user.name %>
+                        </span>
+                    </p>
                     <h5><%= feedback.title %></h5>
                     <div class="buttons">
                         <a href="/feedbacks/<%= feedback.id %>" data-method="delete"><span>削除</span></a>
@@ -15,7 +27,16 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <p class="card-text"><%= feedback.body %></p>
+                    <p class="card-text">
+                        【Aim to Assist】
+                        <br>
+                        <%= simple_format(h(feedback.assist)) %>
+                    </p>
+                    <p class="card-text">
+                        【Actionable】
+                        <br>
+                        <%= simple_format(h(feedback.action)) %>
+                    </p>
                 </div>
             </div>
         </div>
