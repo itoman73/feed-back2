@@ -8,19 +8,30 @@
                             <%= image_tag feedback.user.image.url, class: "thumbnail"  %>
                         <% end %>
                         To：<%= feedback.user.name %>
-                        <% authors = @authors.find_by(feedback_id: feedback) %>
+                        <% author = @authors.find_by(feedback_id: feedback) %>
                         <span class="thumbnail-from-user">
-                        <% if authors.user.image? %>
-                            <%= image_tag authors.user.image.url, class: "thumbnail" %>
+                        <% if author.user.image? %>
+                            <%= image_tag author.user.image.url, class: "thumbnail" %>
                         <% end %>
-                        From：<%= authors.user.name %>
+                        From：<%= author.user.name %>
                         </span>
+                        <span class='star-btn' id="favorite_<%= feedback.id %>">
+                            <%= render "favorites/favorite", feedback: feedback %>
+                        </sapn>
                     </p>
                     <h5><%= feedback.title %></h5>
                     <div class="buttons">
+                        <% if user_signed_in? && author.user.id == current_user.id || user_signed_in? && feedback.user.id == current_user.id %>
                         <a href="/feedbacks/<%= feedback.id %>" data-method="delete"><span>削除</span></a>
+                        <% else %>
+                        <a><span>削除</span></a>
+                        <% end %>
                         <span>　　　</span>
+                        <% if user_signed_in? && author.user.id == current_user.id %>
                         <a href="/feedbacks/<%= feedback.id %>/edit"><span>修正</span></a>
+                        <% else %>
+                        <a><span>修正</span></a>
+                        <% end %>
                     </div>
                 </div>
                 <div class="card-body">

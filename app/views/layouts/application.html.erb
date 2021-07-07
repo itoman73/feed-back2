@@ -35,6 +35,9 @@
             <% end %>
             </div>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/feedbacks/favorites/<%= current_user.id %>">お気に入りを表示</a>
+          </li>
         </ul>
       <% if user_signed_in? %>
       <div class="new_user_registration">

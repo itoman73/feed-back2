@@ -8,4 +8,9 @@ Rails.application.routes.draw do
   get "/feedbacks/:id/edit", to:"feedbacks#edit"
   patch "/feedbacks/:id", to:"feedbacks#update" 
   get "/feedbacks/users/:id", to:"feedbacks#show"
+  get "/feedbacks/favorites/:id", to:"feedbacks#favorite"
+  
+  resources :feedbacks do
+    resource :favorites, only: [:create, :destroy]
+  end
 end

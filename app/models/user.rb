@@ -5,5 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :feedbacks
   has_many :authors
+  has_many :favorites, dependent: :destroy     # ユーザー/お気に入り → 1:多
   mount_uploader :image, ImageUploader
 end

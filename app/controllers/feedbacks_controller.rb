@@ -4,6 +4,8 @@ class FeedbacksController < ApplicationController
     def index
         #トップ画面が表示された時に動作するアクション
         @feedbacks = Feedback.all
+        favorites = Favorite.where(user_id: current_user.id).pluck(:feedback_id)
+        @favorites = Feedback.find(favorites)
     end
     
     def new
@@ -41,6 +43,12 @@ class FeedbacksController < ApplicationController
     def show
         @user = User.find(params[:id])
         @feedbacks = Feedback.where(user_id:params[:id])
+    end
+    
+    def favorite
+        @user = User.find(params[:id])
+        favorites = Favorite.where(user_id:current_user.id).order(created_at: :desc).pluck(:feedback_id)
+        @feedbacks = Feedback.find(favorites)
     end
     
     def product_params

@@ -1,7 +1,15 @@
 @import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
 
 .navbar{
     margin-bottom: 30px;
+}
+
+.star-btn{
+    display: block;
+    text-align: right;
+    margin-top: -30px;
 }
 
 .buttons{
