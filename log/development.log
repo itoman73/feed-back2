@@ -21864,3 +21864,52 @@ Processing by FeedbacksController#index as HTML
 Completed 200 OK in 316ms (Views: 246.9ms | ActiveRecord: 4.1ms | Allocations: 43540)
 
 
+Started GET "/" for 210.136.197.3 at 2021-07-07 09:17:06 +0000
+Cannot render console from 210.136.197.3! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by FeedbacksController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "favorites"."feedback_id" FROM "favorites" WHERE "favorites"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/controllers/feedbacks_controller.rb:7:in `index'
+  [1m[36mFeedback Load (0.1ms)[0m  [1m[34mSELECT "feedbacks".* FROM "feedbacks" WHERE "feedbacks"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/feedbacks_controller.rb:8:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering feedbacks/index.html.erb within layouts/application
+  [1m[36mFeedback Load (0.2ms)[0m  [1m[34mSELECT "feedbacks".* FROM "feedbacks"[0m
+  ↳ app/views/feedbacks/_logged_in.html.erb:2
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/feedbacks/_logged_in.html.erb:7
+  [1m[36mAuthor Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."feedback_id" = ? LIMIT ?[0m  [["feedback_id", 1], ["LIMIT", 1]]
+  ↳ app/views/feedbacks/_logged_in.html.erb:11
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/feedbacks/_logged_in.html.erb:13
+  [1m[36mFavorite Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "favorites" WHERE "favorites"."user_id" = ? AND "favorites"."feedback_id" = ? LIMIT ?[0m  [["user_id", 1], ["feedback_id", 1], ["LIMIT", 1]]
+  ↳ app/views/favorites/_favorite.html.erb:1
+  [1m[36mFavorite Load (0.2ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites" WHERE "favorites"."feedback_id" = ?[0m  [["feedback_id", 1]]
+  ↳ app/views/favorites/_favorite.html.erb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "favorites" WHERE "favorites"."feedback_id" = ?[0m  [["feedback_id", 1]]
+  ↳ app/views/favorites/_favorite.html.erb:10
+  Rendered favorites/_favorite.html.erb (Duration: 33.5ms | Allocations: 7343)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/feedbacks/_logged_in.html.erb:7
+  [1m[36mAuthor Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."feedback_id" = ? LIMIT ?[0m  [["feedback_id", 2], ["LIMIT", 1]]
+  ↳ app/views/feedbacks/_logged_in.html.erb:11
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/feedbacks/_logged_in.html.erb:13
+  [1m[36mFavorite Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "favorites" WHERE "favorites"."user_id" = ? AND "favorites"."feedback_id" = ? LIMIT ?[0m  [["user_id", 1], ["feedback_id", 2], ["LIMIT", 1]]
+  ↳ app/views/favorites/_favorite.html.erb:1
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "favorites" WHERE "favorites"."feedback_id" = ?[0m  [["feedback_id", 2]]
+  ↳ app/views/favorites/_favorite.html.erb:5
+  Rendered favorites/_favorite.html.erb (Duration: 10.6ms | Allocations: 1776)
+  Rendered feedbacks/_logged_in.html.erb (Duration: 119.0ms | Allocations: 22023)
+  Rendered feedbacks/index.html.erb within layouts/application (Duration: 121.7ms | Allocations: 22535)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/layouts/application.html.erb:33
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:44
+  Rendered layout layouts/application.html.erb (Duration: 265.5ms | Allocations: 65492)
+Completed 200 OK in 350ms (Views: 265.0ms | ActiveRecord: 5.7ms | Allocations: 85172)
+
+
