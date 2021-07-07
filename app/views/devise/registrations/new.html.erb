@@ -12,6 +12,26 @@
         <%= f.label :メールアドレス %><br />
         <%= f.email_field :email %>
       </div>
+      <div class="field">
+        <% if @user.image? %>
+        <div class="thumbnail">
+          <%= image_tag @user.image.url, class: "thumbnail" %>
+        </div>
+        <% end %><br>
+        <%= f.label :プロフィール写真 %><br>
+        <%= f.file_field :image %>
+        <%= f.hidden_field :image_cache %>
+      </div>
+      <div class="field">
+        <!-- 既存レコード(DBに保存されている)かつ、画像が存在する場合 -->
+        <% if @user.persisted? && @user.image? %>
+        <label>
+          <%= f.check_box :remove_image %>
+          画像を削除
+        </label>
+        <% end %>
+      </div>
+      <br>
       <br>
       <div class="field">
         <%= f.label :パスワード %>

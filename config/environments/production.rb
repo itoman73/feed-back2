@@ -117,4 +117,5 @@ Rails.application.configure do
   # config.active_record.database_selector = { delay: 2.seconds }
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
+　config.action_mailer.default_url_options = { :host => '5adc2ebf8f17491cac4fd57d438ff5a7.vfs.cloud9.us-east-2.amazonaws.com' }
 end

@@ -12,6 +12,9 @@
         <%= f.label :パスワード %><br />
         <%= f.password_field :password, autocomplete: "off" %>
       </div>
+      <div class="field">
+      <%= link_to 'パスワードを忘れた方はこちら', new_user_password_path %>
+      </div>
       <br>
       <% if devise_mapping.rememberable? -%>
         <div class="field">
