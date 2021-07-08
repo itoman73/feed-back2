@@ -117,18 +117,16 @@ Rails.application.configure do
   # config.active_record.database_selector = { delay: 2.seconds }
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
-  config.hosts << "endorphins-feedback2.herokuapp.com"
+  host = "endorphins-feedback2.herokuapp.com"
   # メール送信関係で追加した内容
-　config.action_mailer.default_url_options = { :host => 'endorphins-feedback2.herokuapp.com' }
+  config.action_mailer.default_url_options = { host: host, protocol: 'https' }
   config.action_mailer.delivery_method = :smtp
-  mail = Settings.gmail[:user_name]
-  pass = Settings.gmail[:password]
   config.action_mailer.smtp_settings = {
     :address => "smtp.gmail.com",
     :port => 587,
-    :domain => 'smtp.gmail.com',
-    :user_name => mail,
-    :password => pass,
+    :domain => 'gmail.com',
+    :user_name => ENV['GMAIL_USERNAME'],
+    :password => ENV['GMAIL_PASSWORD'],
     :authentication => :plain,
     :enable_starttls_auto => true
   }
