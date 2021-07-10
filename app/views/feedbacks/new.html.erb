@@ -1,6 +1,4 @@
 <h3>フィードバック送信画面</h3>
-
-<% if user_signed_in? %>
     <%= form_tag("/create") do %>
         <div>
             <%= label_tag "form-content", "To" %>
@@ -20,6 +18,3 @@
         </div>
         <%= submit_tag "送信",class:"btn btn-primary", data: { confirm: "送信しますがよろしいですか？" } %>
     <% end %>
-<% else %>
-  <%= render 'feedbacks/not_logged_in' %>
-<% end %>

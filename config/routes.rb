@@ -13,4 +13,8 @@ Rails.application.routes.draw do
   resources :feedbacks do
     resource :favorites, only: [:create, :destroy]
   end
+  
+  get "/missions", to:"missions#index" 
+  patch "/missions/:id", to:"missions#update"
+  
 end
