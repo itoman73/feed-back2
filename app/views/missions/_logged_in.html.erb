@@ -1,0 +1,32 @@
+<%= form_tag("/missions/"+@mission.to_s,:method=>:patch) do %>
+    <div class="form-group">
+        <%= label_tag "form-content-mission", "＜入力エリア＞" %>
+        <%= text_area :body,:content, id:"form-content-mission", class:"form-control", placeholder: "人生の目的・使命" %>
+    </div>
+        <%= submit_tag "更新する",class:"btn btn-dark" %>
+<% end %>
+<br>
+<br>
+<div class="row">   
+    <% @missions.each do |mission| %>
+        <div class="col-md-6">
+            <div class="card mb-6" style="max-width: 100rem;">
+                <div class="card-header text-white bg-primary">
+                    <p>
+                        <% if mission.user.image? %>
+                            <%= image_tag mission.user.image.url, class: "thumbnail"  %>
+                        <% end %>
+                        <%= mission.user.name %>
+                    </p>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">
+                        <%= mission.updated_at.to_s(:datetime_jp) %>
+                        <p><人生の目的・使命></p>
+                        <%= simple_format(h(mission.mission)) %>
+                    </p>
+                </div>
+            </div>
+        </div>
+    <% end %>
+</div>

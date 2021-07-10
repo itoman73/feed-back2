@@ -1,6 +1,5 @@
 <h3>お気に入り登録した前向きフィードバック</h3>
 
-<% if user_signed_in? %>
 <div class="row">   
     <% @feedbacks.each do |feedback| %>
         <div class="col-sm-12">
@@ -53,6 +52,3 @@
         </div>
     <% end %>
 </div>
-<% else %>
-  <%= render 'feedbacks/not_logged_in' %>
-<% end %>
