@@ -12,7 +12,7 @@ class MissionsController < ApplicationController
         mission.user_id = current_user.id
         mission.save
         redirect_to "/missions"
-        rescue => e 
+        rescue 
         mission = Mission.create(mission:params["body"]["content"],user_id:current_user.id)
         redirect_to "/missions"
              
