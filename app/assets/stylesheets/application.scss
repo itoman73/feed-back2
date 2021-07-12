@@ -2,10 +2,31 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
+//ヘッダーの調整
 .navbar{
+    margin-bottom: 30px;
+    display: flex;
+    position: fixed;
+    justify-content: space-between;
+    width: 100%;
+    top: 0;
+    z-index: 10000;
+}
+
+.slogan{
+    text-align: center;
+}
+
+.slogan.company_name {
+    margin-top: 75px;
+}
+
+.slogan.subtittle{
+    font-size: 20px;
     margin-bottom: 30px;
 }
 
+//各種ボタン類の調整
 .star-btn{
     display: block;
     text-align: right;
